@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Completed {%endblock%}
+
+{% block content %}
+
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="ex1">
+  <div class="form-group">
+    {%if object.completed%}
+    <input type="checkbox" name="completed" id="completed" checked>
+    {%endif%}
+    {%if not object.completed%}
+    <input type="checkbox" name="completed" id="completed">
+    {%endif%}
+    <label for="completed">Complete</label>
+  </div>
+  <input type="submit" value="Submit" class = 'btn btn-info btn-sm'>
+  <a href="/">Cancel</a>
+</form>
+
+{% endblock %}

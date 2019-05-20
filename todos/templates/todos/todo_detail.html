@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Details {%endblock%}
+
+{% block content %}
+
+<div class="ex2">
+<h1>{{todo.title}}</h1>
+<h4>{{todo.text}}</h4>
+<br>
+<p>Priority: {{todo.priority}}</p>
+
+<p>Deadline: {{todo.duedate}}</p>
+<p>Completed: {{todo.completed}}</p>
+<br>
+<a href="/">Go To Home</a>
+
+</div>
+{% endblock%}

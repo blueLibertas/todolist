@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Todo List {%endblock%}
+
+{% block content %}
+
+{% for Todo in object_list %}
+{%if Todo.completed == False%}
+{%if Todo.past_duedate%}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Passed Deadline!</strong> {{Todo.title}} was due on {{Todo.duedate}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{%endif%}
+{%endif%}
+{% endfor %}
+
+<p></p>
+<table class='table'>
+  <thead>
+    <tr>
+      <th scope='col'>Priority</th>
+      <th scope='col'>Title</th>
+      <th scope='col'>Text</th>
+      <th scope='col'>Deadline</th>
+      <th scope='col'>Completed</th>
+      <th scope='col'>Modify</th>
+      <th scope='col'>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for Todo in object_list %}
+      <tr>
+        <td>{{Todo.priority}}</td>
+        <td><a href="{% url 'detail' pk=Todo.id%}">{{Todo.title}}</a></td>
+        <td>{{Todo.text}}</td>
+        <td>{{Todo.duedate}}</td>
+        <td><a href="{% url 'complete' pk=Todo.id%}" class='btn btn-outline-sucess btn-warning  btn-sm'>{{Todo.completed}}</a></td>
+        <td><a href="{% url 'update' pk=Todo.id%}" class='btn btn-sucess btn-info  btn-sm'>Modify</a></td>
+        <td><a href="{% url 'delete' pk=Todo.id%}" class='btn btn-sucess btn-danger  btn-sm'>Delete</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

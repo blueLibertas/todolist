@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Todo {%endblock%}
+
+{% block content %}
+
+<form action="" method="post">
+  {% csrf_token %}
+  <form>
+    <div class="ex1">
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <input type="number" class="form-control"  min="0" name="priority" id="priority" value={{object.priority}} default = {{object.pritoriy}}>
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text"  class="form-control" name="title" id="title" value={{object.title}}>
+    </div>
+    <div class="form-group">
+      <label for="text">Text</label>
+      <input type="text" class="form-control" name="text" id="text" value="{{object.text}}">
+    </div>
+    <div class="form-group">
+      <label for="duedate">Deadline</label>
+      <input type="date" class="form-control" name="duedate" id="duedate" value = "{{object.dateString}}">
+    </div>
+
+    <br>
+  <input type="submit" value="Update Todo" class = 'btn btn-secondary btn-sm'>
+  <form class="form-inline">
+    <a href="/">Cancel</a>
+  </form>
+  </div>
+</form>
+
+{% endblock %}

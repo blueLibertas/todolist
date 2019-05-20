@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Update Todo {%endblock%}
+
+{% block content %}
+
+<form action="" method="post">
+  {% csrf_token %}
+  <form>
+    <div class="ex1">
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <input type="number" class="form-control"  min="0" name="priority" id="priority" placeholder="Enter a nonnegative number">
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text"  class="form-control" name="title" id="title" placeholder={{Todo.title}}>
+    </div>
+    <div class="form-group">
+      <label for="text">Text</label>
+      <input type="text" class="form-control" name="text" id="text" placeholder="Enter the details">
+    </div>
+    <div class="form-group">
+      <label for="duedate">Deadline</label>
+      <input type="date" class="form-control" name="duedate" id="duedate">
+    </div>
+
+    <br>
+  <input type="submit" value="Add New Todo" class = 'btn btn-secondary btn-sm'>
+  <form class="form-inline">
+    <a href="/">Cancel</a>
+  </form>
+  </div>
+</form>
+
+{% endblock %}
